@@ -1,6 +1,8 @@
 package fun.madeby.fightingchampionshipbackend_rest;
 
+import fun.madeby.fightingchampionshipbackend_rest.models.Event;
 import fun.madeby.fightingchampionshipbackend_rest.models.Fighter;
+import fun.madeby.fightingchampionshipbackend_rest.models.Venue;
 import fun.madeby.fightingchampionshipbackend_rest.models.WeightClass;
 import fun.madeby.fightingchampionshipbackend_rest.services.FighterService;
 import fun.madeby.fightingchampionshipbackend_rest.services.WeightClassService;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 
 @Component
@@ -42,7 +45,7 @@ public void init(){
 	weightClassService.register(middleWeight);
 	weightClassService.register(lightHeavyWeight);
 
-	// Make Fighter01 /--> stances/Muay Thai/Grappling/ Counter Striker / Karate
+	// Make Fighters /--> stances/Muay Thai/Grappling/ Counter Striker / Karate
 	Fighter fighter01 = new Fighter();
 	fighter01.setFirstName("Herbert");
 	fighter01.setLastName("Lindsay");
@@ -84,6 +87,38 @@ public void init(){
 	fighter03.setReach(90.0);
 	fighter03.setWeightClass(middleWeight);
 	fighterService.register(fighter03);
+
+	Fighter fighter04 = new Fighter();
+	fighter04.setFirstName("Dolores");
+	fighter04.setLastName("Stoob");
+	fighter04.setNickName("Stoobie-Do");
+	fighter04.setDob(LocalDate.of(1995, Month.DECEMBER, 13));
+	fighter04.setBirthPlace("Ashfield");
+	fighter04.setCurrentGym("Dirigible's Dry Test");
+	fighter04.setStance("Grappling");
+	fighter04.setWeight(85.3);
+	fighter04.setHeight(150.0);
+	fighter04.setReach(92.0);
+	fighter04.setWeightClass(lightWeight);
+	fighterService.register(fighter04);
+
+	// Make Venues
+	Venue venue01 = new Venue("UFC Apex", "6650 El Camino Road, Las Vegas, Nevada, 89118");
+	Venue venue02 = new Venue("Chartway Arena", "4320 Hampton Blvd, Norfolk, Virginia, 23529");
+
+	// Make Events
+	Event event01 =  new Event();
+	Event event02 =  new Event();
+
+	event01.setName("The Definitive Thump");
+	event01.setStartDateTime(LocalDateTime.of(2021, Month.AUGUST, 30, 20, 0));
+	event01.setVenue(venue02);
+
+	event02.setName("Grudge, Sugar, Pain, Magic");
+	event02.setStartDateTime(LocalDateTime.of(2021, Month.OCTOBER, 30, 20, 0));
+	event01.setVenue(venue01);
+
+
 }
 
 

@@ -24,4 +24,19 @@ public class Venue {
 	@OneToMany(mappedBy = "venue", cascade = {CascadeType.PERSIST,
 		CascadeType.MERGE, CascadeType.DETACH})
 	private Set<Event> events = new HashSet<>();
+
+public Venue() {
+}
+
+public Venue(String name, String address, Set<Event> events) {
+	this.name = name;
+	this.address = address;
+	this.events = events;
+}
+
+public Venue(String name, String address) {
+	this.name = name;
+	this.address = address;
+	this.events = null;
+}
 }

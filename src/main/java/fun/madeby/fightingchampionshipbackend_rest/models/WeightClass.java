@@ -21,9 +21,8 @@ private String name;
 private String abbreviation;
 @OneToMany(mappedBy="weightClass", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
 private Set<Fighter> fighters = new HashSet<>();
-
-//@OneToMany(mappedBy="weightClass", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
-//private Set<Fight> fights = new HashSet<>();
+@OneToMany(mappedBy="weightClass", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+private Set<Fight> fights = new HashSet<>();
 
 
 public WeightClass() {
