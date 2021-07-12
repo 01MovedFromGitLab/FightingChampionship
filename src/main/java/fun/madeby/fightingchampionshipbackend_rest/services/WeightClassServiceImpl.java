@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class WeightClassServiceImpl implements WeightClassService{
-	WeightClassRepository weightClassRepo;
+	private final WeightClassRepository weightClassRepo;
 
 @Override
 public void register(WeightClass weightClass) {

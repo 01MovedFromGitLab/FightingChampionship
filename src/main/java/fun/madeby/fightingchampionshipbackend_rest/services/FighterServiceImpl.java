@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class FighterServiceImpl implements FighterService{
-	FighterRepository fighterRepo;
+	private final FighterRepository fighterRepo;
 
 @Override
 public void register(Fighter fighter) {
