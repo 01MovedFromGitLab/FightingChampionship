@@ -10,21 +10,21 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class FighterServiceImpl implements FighterService{
-	private final FighterRepository fighterRepo;
+	private final FighterRepository FIGHTER_REPO;
 
 @Override
 public void register(Fighter fighter) {
-	fighterRepo.save(fighter);
+	FIGHTER_REPO.save(fighter);
 }
 
 @Override
 public Fighter retrieveById(Long id) {
-	return fighterRepo.findById(id).orElseThrow(RuntimeException::new);
+	return FIGHTER_REPO.findById(id).orElseThrow(RuntimeException::new);
 }
 
 @Override
 public List<Fighter> retrieveAll() {
-	return fighterRepo.findAll();
+	return FIGHTER_REPO.findAll();
 
 }
 }

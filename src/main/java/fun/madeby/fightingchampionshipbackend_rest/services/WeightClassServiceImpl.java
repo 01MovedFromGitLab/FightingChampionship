@@ -10,21 +10,21 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class WeightClassServiceImpl implements WeightClassService{
-	private final WeightClassRepository weightClassRepo;
+	private final WeightClassRepository WEIGHT_CLASS_REPO;
 
 @Override
 public void register(WeightClass weightClass) {
-	weightClassRepo.save(weightClass);
+	WEIGHT_CLASS_REPO.save(weightClass);
 }
 
 @Override
 public WeightClass retrieveById(Long id) {
-	return weightClassRepo.findById(id).orElseThrow(RuntimeException::new);
+	return WEIGHT_CLASS_REPO.findById(id).orElseThrow(RuntimeException::new);
 }
 
 @Override
 public List<WeightClass> retrieveAll() {
-	return weightClassRepo.findAll();
+	return WEIGHT_CLASS_REPO.findAll();
 
 }
 }
