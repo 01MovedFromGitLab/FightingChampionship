@@ -16,13 +16,15 @@ public class FighterServiceImpl implements FighterService{
 	private final FightRepository FIGHT_REPO;
 
 @Override
-public void register(Fighter fighter) {
+public Fighter register(Fighter fighter) {
 	FIGHTER_REPO.save(fighter);
+	return fighter;
 }
 
 @Override
 public Fighter retrieveById(Long id) {
-	return FIGHTER_REPO.findById(id).orElseThrow(RuntimeException::new);
+	return FIGHTER_REPO.findById(id)
+		       .orElseThrow(()-> new RuntimeException("Fighter " + id + " was not found @ retrieveById/FighterServiceImpl"));
 }
 
 @Override

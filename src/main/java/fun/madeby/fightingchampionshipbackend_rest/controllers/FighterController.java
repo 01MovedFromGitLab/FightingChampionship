@@ -5,17 +5,44 @@ import fun.madeby.fightingchampionshipbackend_rest.models.FightRecord;
 import fun.madeby.fightingchampionshipbackend_rest.models.Fighter;
 import fun.madeby.fightingchampionshipbackend_rest.services.FighterService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 public class FighterController {
 private final FighterService fighterService;
+
+
+@PostMapping("api/fighter/new")
+public void addFighter(@RequestBody Fighter fighter) {
+	fighterService.register(fighter);
+}
+
+@PutMapping("api/fighter/{id}")
+public ResponseEntity<Fighter> updateFighter(@PathVariable Long id,
+                                             @Valid @RequestBody Fighter fighterDetails) {
+	Fighter fighter = fighterService.retrieveById(id);
+
+
+	fighter.setFirstName(fighterDetails.getFirstName());
+	fighter.setLastName(fighterDetails.getLastName());
+	fighter.setNickName(fighterDetails.getNickName());
+	fighter.setDob(fighterDetails.getDob());
+	fighter.setBirthPlace(fighterDetails.getBirthPlace());
+	fighter.setCurrentGym(fighterDetails.getCurrentGym());
+	fighter.setReach(fighterDetails.getReach());
+	fighter.setWeight(fighterDetails.getWeight());
+	fighter.setWeightClass(fighterDetails.getWeightClass());
+	fighter.setHeight(fighterDetails.getHeight());
+	fighter.setStance(fighterDetails.getStance());
+
+	final Fighter updatedFighter = fighterService.register(fighter);
+	return ResponseEntity.ok(updatedFighter);
+}
 
 
 @GetMapping(value = "api/fighter/{id}")
