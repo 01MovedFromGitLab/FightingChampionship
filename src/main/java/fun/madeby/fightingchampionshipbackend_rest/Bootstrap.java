@@ -4,7 +4,9 @@ import fun.madeby.fightingchampionshipbackend_rest.models.Event;
 import fun.madeby.fightingchampionshipbackend_rest.models.Fighter;
 import fun.madeby.fightingchampionshipbackend_rest.models.Venue;
 import fun.madeby.fightingchampionshipbackend_rest.models.WeightClass;
+import fun.madeby.fightingchampionshipbackend_rest.services.EventService;
 import fun.madeby.fightingchampionshipbackend_rest.services.FighterService;
+import fun.madeby.fightingchampionshipbackend_rest.services.VenueService;
 import fun.madeby.fightingchampionshipbackend_rest.services.WeightClassService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
@@ -21,6 +23,8 @@ import java.time.Month;
 public class Bootstrap {
 private final FighterService fighterService;
 private final WeightClassService weightClassService;
+private final VenueService venueService;
+private final EventService eventService;
 
 // // to turn off @PostConstruct
 @PostConstruct
@@ -105,6 +109,8 @@ public void init(){
 	// Make Venues
 	Venue venue01 = new Venue("UFC Apex", "6650 El Camino Road, Las Vegas, Nevada, 89118");
 	Venue venue02 = new Venue("Chartway Arena", "4320 Hampton Blvd, Norfolk, Virginia, 23529");
+	venueService.register(venue01);
+	venueService.register(venue02);
 
 	// Make Events
 	Event event01 =  new Event();
@@ -116,7 +122,10 @@ public void init(){
 
 	event02.setName("Grudge, Sugar, Pain, Magic");
 	event02.setStartDateTime(LocalDateTime.of(2021, Month.OCTOBER, 30, 20, 0));
-	event01.setVenue(venue01);
+	event02.setVenue(venue01);
+
+	eventService.register(event01);
+	eventService.register(event02);
 
 
 }

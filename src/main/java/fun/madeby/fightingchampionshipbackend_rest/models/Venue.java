@@ -19,7 +19,7 @@ public class Venue {
 	@Column(name="Name", columnDefinition = "VARCHAR(150) NOT NULL")
 	private String name;
 	@NotBlank
-	@Column(name="Name", columnDefinition = "VARCHAR(500) NOT NULL")
+	@Column(name="Address", columnDefinition = "VARCHAR(500) NOT NULL")
 	private String address;
 	@OneToMany(mappedBy = "venue", cascade = {CascadeType.PERSIST,
 		CascadeType.MERGE, CascadeType.DETACH})
