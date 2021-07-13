@@ -1,13 +1,7 @@
 package fun.madeby.fightingchampionshipbackend_rest;
 
-import fun.madeby.fightingchampionshipbackend_rest.models.Event;
-import fun.madeby.fightingchampionshipbackend_rest.models.Fighter;
-import fun.madeby.fightingchampionshipbackend_rest.models.Venue;
-import fun.madeby.fightingchampionshipbackend_rest.models.WeightClass;
-import fun.madeby.fightingchampionshipbackend_rest.services.EventService;
-import fun.madeby.fightingchampionshipbackend_rest.services.FighterService;
-import fun.madeby.fightingchampionshipbackend_rest.services.VenueService;
-import fun.madeby.fightingchampionshipbackend_rest.services.WeightClassService;
+import fun.madeby.fightingchampionshipbackend_rest.models.*;
+import fun.madeby.fightingchampionshipbackend_rest.services.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -25,6 +19,7 @@ private final FighterService fighterService;
 private final WeightClassService weightClassService;
 private final VenueService venueService;
 private final EventService eventService;
+private final FightService fightService;
 
 // // to turn off @PostConstruct
 @PostConstruct
@@ -117,16 +112,66 @@ public void init(){
 	Event event02 =  new Event();
 
 	event01.setName("The Definitive Thump");
-	event01.setStartDateTime(LocalDateTime.of(2021, Month.AUGUST, 30, 20, 0));
+	event01.setStartDateTime(LocalDateTime.of(2021, Month.JUNE, 30, 20, 0));
 	event01.setVenue(venue02);
 
-	event02.setName("Grudge, Sugar, Pain, Magic");
+	event02.setName("Grudge-Sugar-Pain-Magic");
 	event02.setStartDateTime(LocalDateTime.of(2021, Month.OCTOBER, 30, 20, 0));
 	event02.setVenue(venue01);
 
 	eventService.register(event01);
 	eventService.register(event02);
 
+	// Create Past (Event01) Fights
+	Fight fight01 = new Fight();
+	fight01.setEvent(event01);
+	fight01.setWeightClass(bantamWeight);
+	fight01.setBlueFighter(fighter01);
+	fight01.setRedFighter(fighter02);
+	fight01.setIsFinished(true);
+	fight01.setFinishedInRound(4L);
+	fight01.setFinishMethod("KO");
+	fight01.setFinishTime(LocalDateTime.of(2021, Month.JUNE, 30, 20, 45));
+	fight01.setWinner(fighter01);
+	fightService.register(fight01);
+
+	Fight fight02 = new Fight();
+	fight02.setEvent(event01);
+	fight02.setWeightClass(bantamWeight);
+	fight02.setBlueFighter(fighter04);
+	fight02.setRedFighter(fighter03);
+	fight02.setIsFinished(true);
+	fight02.setFinishedInRound(8L);
+	fight02.setFinishMethod("TKO");
+	fight02.setFinishTime(LocalDateTime.of(2021, Month.JUNE, 30, 21, 55));
+	fight02.setWinner(fighter03);
+	fightService.register(fight02);
+
+	// Create Future (Event 02) Fights
+
+	Fight fight03 = new Fight();
+	fight03.setEvent(event02);
+	fight03.setWeightClass(welterWeight);
+	fight03.setBlueFighter(fighter01);
+	fight03.setRedFighter(fighter04);
+	//fight03.setIsFinished(true);
+	//fight03.setFinishedInRound(10L);
+	//fight03.setFinishMethod("Points");
+	//fight03.setFinishTime(LocalDateTime.of(2021, Month.OCTOBER, 30, 20, 55));
+	//fight03.setWinner(fighter01);
+	fightService.register(fight03);
+
+	Fight fight04 = new Fight();
+	fight04.setEvent(event02);
+	fight04.setWeightClass(welterWeight);
+	fight04.setBlueFighter(fighter03);
+	fight04.setRedFighter(fighter02);
+	//fight04.setIsFinished(true);
+	//fight04.setFinishedInRound(3L);
+	//fight04.setFinishMethod("KO");
+	//fight04.setFinishTime(LocalDateTime.of(2021, Month.JUNE, 30, 22, 30));
+	//fight04.setWinner(fighter03);
+	fightService.register(fight04);
 
 }
 

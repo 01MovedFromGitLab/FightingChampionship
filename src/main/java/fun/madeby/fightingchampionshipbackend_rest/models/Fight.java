@@ -17,12 +17,12 @@ public class Fight {
 	private Long id;
 	@Column(name ="IsFinished", columnDefinition = "BOOLEAN DEFAULT FALSE")
 	private Boolean isFinished;
-	@Column(name="FinishedInRound", columnDefinition = "BIGINT NOT NULL")
+	@Column(name="FinishedInRound", columnDefinition = "BIGINT NULL") // Null before event
 	private Long finishedInRound;
-	@Column(name="FinishTime", columnDefinition = "DATE NOT NULL")
+	@Column(name="FinishTime", columnDefinition = "DATETIME NULL")
 	@DateTimeFormat(pattern = "yyyy-MM-dd-HH:mm")
 	private LocalDateTime finishTime;
-	@Column(name="FinishMethod", columnDefinition = "VARCHAR(50) NOT NULL")
+	@Column(name="FinishMethod", columnDefinition = "VARCHAR(50) NULL")
 	private String finishMethod;
 
 	@OneToOne

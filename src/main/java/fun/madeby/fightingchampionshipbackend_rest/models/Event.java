@@ -21,7 +21,7 @@ public class Event {
 	@Column(name="Name", columnDefinition = "VARCHAR(250) NOT NULL")
 	private String name;
 	@NotBlank
-	@Column(name="Date", columnDefinition = "DATE NOT NULL")
+	@Column(name="Date", columnDefinition = "DATETIME NULL")
 	@DateTimeFormat(pattern = "yyyy-MM-dd-HH:mm")
 	private LocalDateTime startDateTime;
 	@ManyToOne
