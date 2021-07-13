@@ -17,10 +17,8 @@ import java.util.List;
 public class FighterController {
 private final FighterService fighterService;
 
-//@GetMapping(value="api/fighter/{id}", produces = "applicatiion/json; charset=UTF-8")
 
 @GetMapping(value = "api/fighter/{id}")
-@ResponseBody
 public Fighter fighterById(@PathVariable Long id) {
 	return fighterService.retrieveById(id);
 }
@@ -32,7 +30,6 @@ public List<Fight> fightsWonById(@PathVariable Long id) {
 }*/
 
 @GetMapping(value="api/fighter/record/{id}")
-@ResponseBody
 public FightRecord retrieveFightResults(@PathVariable Long id){
 	// Yes I know @Query and count would be quicker and more elegant but busy learning this..
 	FightRecord fightRecord = new FightRecord();
@@ -50,7 +47,6 @@ public FightRecord retrieveFightResults(@PathVariable Long id){
 
 
 @GetMapping(value = "api/fighters")
-@ResponseBody
 public List<Fighter> allFighters() {
 	return fighterService.retrieveAll();
 }
