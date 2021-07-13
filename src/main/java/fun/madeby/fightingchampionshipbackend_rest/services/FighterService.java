@@ -11,5 +11,6 @@ void register(Fighter fighter);
 Fighter retrieveById(Long id);
 List<Fighter> retrieveAll();
 List<Fight> retrieveWonFights(Long id);
-//ResponseEntity<String> retrieveWonFights(Long id);
+List<Fight> retrieveDrawnFights(Long id);
+Integer retrieveLostFightCount(Long id);
 }

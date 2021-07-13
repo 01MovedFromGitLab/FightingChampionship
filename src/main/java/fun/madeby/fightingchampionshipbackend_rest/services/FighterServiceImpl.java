@@ -39,6 +39,23 @@ public List<Fight> retrieveWonFights(Long id) {
 	return FIGHT_REPO.findFightsByIsFinishedNotNullAndWinnerIs(fighter);
 }
 
+@Override
+public List<Fight> retrieveDrawnFights(Long id) {
+	return FIGHT_REPO.findFighterDraws(id);
+}
+
+@Override
+public Integer retrieveLostFightCount(Long id) {
+	return FIGHT_REPO.findFighterLosses(id);
+}
+/*
+@Override
+public List<Fight> retrieveLostAndDrawnFights(Long id) {
+	Fighter fighter = retrieveById(id);
+	return FIGHT_REPO
+		       .findFightsByIsFinishedNotNullAndWinnerIsNotAndBlueFighterContainsOrRedFighterContains(fighter);
+}*/
+
 
 /*public ResponseEntity<String> retrieveWonFights(Long id){
 	Fighter fighter = retrieveById(id);
