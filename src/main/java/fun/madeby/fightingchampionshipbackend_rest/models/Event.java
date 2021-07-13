@@ -1,5 +1,6 @@
 package fun.madeby.fightingchampionshipbackend_rest.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,6 +26,7 @@ public class Event {
 	@DateTimeFormat(pattern = "yyyy-MM-dd-HH:mm")
 	private LocalDateTime startDateTime;
 	@ManyToOne
+	@JsonIgnoreProperties("events")
 	@JoinColumn(name="VenueId")
 	private Venue venue;
 	@OneToMany(mappedBy="event", cascade = {CascadeType.PERSIST, CascadeType.MERGE,

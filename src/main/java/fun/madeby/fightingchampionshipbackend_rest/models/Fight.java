@@ -1,5 +1,6 @@
 package fun.madeby.fightingchampionshipbackend_rest.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,10 +39,12 @@ public class Fight {
 	private Fighter blueFighter;
 
 	@ManyToOne // 01-Every fight belongs to a weight class
+	@JsonIgnoreProperties("fights")
 	@JoinColumn(name="WeightClass")
 	private WeightClass weightClass;
 
 	@ManyToOne // 02-Every fight belongs to an event
+	@JsonIgnoreProperties("fightCard")
 	@JoinColumn(name="EventId")
 	private Event event;
 

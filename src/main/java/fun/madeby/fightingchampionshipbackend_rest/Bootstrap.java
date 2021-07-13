@@ -22,7 +22,7 @@ private final EventService eventService;
 private final FightService fightService;
 
 // // to turn off @PostConstruct
-@PostConstruct
+//@PostConstruct
 public void init(){
 
 	// Make Weight Classes

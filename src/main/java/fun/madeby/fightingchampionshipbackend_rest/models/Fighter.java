@@ -1,5 +1,6 @@
 package fun.madeby.fightingchampionshipbackend_rest.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -37,6 +38,7 @@ private double height;
 private double reach;
 
 @ManyToOne
+@JsonIgnoreProperties("fighters")
 @JoinColumn(name="WeightClassId")
 private WeightClass weightClass;
 
