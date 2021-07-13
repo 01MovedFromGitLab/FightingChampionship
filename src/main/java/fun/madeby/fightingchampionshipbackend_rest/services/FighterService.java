@@ -7,9 +7,11 @@ import java.util.List;
 
 public interface FighterService {
 Fighter register(Fighter fighter);
+void remove(Long id);
 Fighter retrieveById(Long id);
 List<Fighter> retrieveAll();
 List<Fight> retrieveWonFights(Long id);
 List<Fight> retrieveDrawnFights(Long id);
 Integer retrieveLostFightCount(Long id);
+
 }

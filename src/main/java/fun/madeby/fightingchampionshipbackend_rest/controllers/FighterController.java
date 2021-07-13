@@ -16,6 +16,10 @@ import java.util.List;
 public class FighterController {
 private final FighterService fighterService;
 
+@DeleteMapping("api/fighter/{id}")
+public void deleteFighter(@PathVariable Long id) {
+	fighterService.remove(id);
+}
 
 @PostMapping("api/fighter/new")
 public void addFighter(@RequestBody Fighter fighter) {

@@ -15,11 +15,20 @@ public class FighterServiceImpl implements FighterService{
 	private final FighterRepository FIGHTER_REPO;
 	private final FightRepository FIGHT_REPO;
 
+
+
 @Override
 public Fighter register(Fighter fighter) {
 	FIGHTER_REPO.save(fighter);
 	return fighter;
 }
+
+@Override
+public void remove(Long id) {
+	FIGHTER_REPO.deleteById(id);
+}
+
+
 
 @Override
 public Fighter retrieveById(Long id) {
@@ -50,6 +59,7 @@ public List<Fight> retrieveDrawnFights(Long id) {
 public Integer retrieveLostFightCount(Long id) {
 	return FIGHT_REPO.findFighterLosses(id);
 }
+
 /*
 @Override
 public List<Fight> retrieveLostAndDrawnFights(Long id) {
