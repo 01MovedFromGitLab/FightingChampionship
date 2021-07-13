@@ -38,7 +38,7 @@ private double height;
 private double reach;
 
 @ManyToOne
-@JsonIgnoreProperties("fighters")
+@JsonIgnoreProperties({"fighters", "fights"})
 @JoinColumn(name="WeightClassId")
 private WeightClass weightClass;
 

@@ -125,7 +125,7 @@ public void init(){
 	// Create Past (Event01) Fights
 	Fight fight01 = new Fight();
 	fight01.setEvent(event01);
-	fight01.setWeightClass(bantamWeight);
+	fight01.setWeightClass(strawWeight);
 	fight01.setBlueFighter(fighter01);
 	fight01.setRedFighter(fighter02);
 	fight01.setIsFinished(true);
@@ -137,7 +137,7 @@ public void init(){
 
 	Fight fight02 = new Fight();
 	fight02.setEvent(event01);
-	fight02.setWeightClass(bantamWeight);
+	fight02.setWeightClass(middleWeight);
 	fight02.setBlueFighter(fighter04);
 	fight02.setRedFighter(fighter03);
 	fight02.setIsFinished(true);
@@ -151,7 +151,7 @@ public void init(){
 
 	Fight fight03 = new Fight();
 	fight03.setEvent(event02);
-	fight03.setWeightClass(welterWeight);
+	fight03.setWeightClass(strawWeight);
 	fight03.setBlueFighter(fighter01);
 	fight03.setRedFighter(fighter04);
 	//fight03.setIsFinished(true);
@@ -163,7 +163,7 @@ public void init(){
 
 	Fight fight04 = new Fight();
 	fight04.setEvent(event02);
-	fight04.setWeightClass(welterWeight);
+	fight04.setWeightClass(lightWeight);
 	fight04.setBlueFighter(fighter03);
 	fight04.setRedFighter(fighter02);
 	//fight04.setIsFinished(true);
