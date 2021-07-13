@@ -37,6 +37,7 @@ private double height;
 @Column(name = "Reach", columnDefinition = "Decimal(10,2)")
 private double reach;
 
+
 @ManyToOne
 @JsonIgnoreProperties({"fighters", "fights"})
 @JoinColumn(name="WeightClassId")
