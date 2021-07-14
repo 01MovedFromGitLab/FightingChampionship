@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1/fighter")

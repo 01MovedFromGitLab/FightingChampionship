@@ -11,5 +11,5 @@ import java.util.List;
 
 public interface FighterRepository extends JpaRepository<Fighter, Long> {
 	@Query("SELECT f FROM Fighter f WHERE f.dob < ?1")
-	List<Fighter> bornBefore(@PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date);
+	List<Fighter> bornBefore(@DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date);
 }
