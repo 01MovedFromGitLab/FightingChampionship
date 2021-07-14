@@ -13,20 +13,21 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("api/fighter")
 public class FighterController {
 private final FighterService fighterService;
 
-@DeleteMapping("api/fighter/{id}")
+@DeleteMapping("/{id}")
 public void deleteFighter(@PathVariable Long id) {
 	fighterService.remove(id);
 }
 
-@PostMapping("api/fighter/new")
+@PostMapping("/new")
 public void addFighter(@RequestBody Fighter fighter) {
 	fighterService.register(fighter);
 }
 
-@PutMapping("api/fighter/{id}")
+@PutMapping("/{id}")
 public ResponseEntity<Fighter> updateFighter(@PathVariable Long id,
                                              @Valid @RequestBody Fighter fighterDetails) {
 	Fighter fighter = fighterService.retrieveById(id);
@@ -49,7 +50,7 @@ public ResponseEntity<Fighter> updateFighter(@PathVariable Long id,
 }
 
 
-@GetMapping(value = "api/fighter/{id}")
+@GetMapping(value = "/{id}")
 public Fighter fighterById(@PathVariable Long id) {
 	return fighterService.retrieveById(id);
 }
@@ -60,7 +61,7 @@ public List<Fight> fightsWonById(@PathVariable Long id) {
 	return  fighterService.retrieveWonFights(id);
 }*/
 
-@GetMapping(value="api/fighter/record/{id}")
+@GetMapping(value="record/{id}")
 public FightRecord retrieveFightResults(@PathVariable Long id){
 	// Yes I know @Query and count would be quicker and more elegant but busy learning this..
 	FightRecord fightRecord = new FightRecord();
@@ -77,7 +78,7 @@ public FightRecord retrieveFightResults(@PathVariable Long id){
 }
 
 
-@GetMapping(value = "api/fighters")
+@GetMapping(value = "/all")
 public List<Fighter> allFighters() {
 	return fighterService.retrieveAll();
 }
