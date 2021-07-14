@@ -24,8 +24,9 @@ public void deleteFighter(@PathVariable Long id) {
 }
 
 @GetMapping("search/{date}")
-public List<Fighter> birthDateBefore(@PathVariable LocalDate date) {
-	return fighterService.retrieveBirthDateBefore(date);
+public List<Fighter> birthDateBefore(@PathVariable String date) {
+	LocalDate date1 = LocalDate.parse(date);
+	return fighterService.retrieveBirthDateBefore(date1);
 }
 
 
