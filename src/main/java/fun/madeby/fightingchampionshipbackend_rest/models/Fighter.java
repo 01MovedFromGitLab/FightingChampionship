@@ -22,7 +22,7 @@ private String lastName;
 @Column(name = "NickName", columnDefinition = "VARCHAR(100) NOT NULL")
 private String nickName;
 @Column(name = "DateOfBirth", columnDefinition = "DATE NOT NULL")
-@DateTimeFormat(pattern = "yyyy-MM-dd")
+@DateTimeFormat(pattern = "yyyy-MM-dd") // this is actually default..
 private LocalDate dob;
 @Column(name = "BirthPlace", columnDefinition = "VARCHAR(100) NOT NULL")
 private String birthPlace;

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface FightRepository extends JpaRepository<Fight, Long> {
+	// api/V1 to return fight record of fighter.
 	List<Fight> findFightsByIsFinishedNotNullAndWinnerIs(Fighter fighter);
 	@Query("SELECT f FROM Fight f WHERE f.isFinished = true AND f.winner = NULL AND (f.blueFighter.id = ?1 OR f.redFighter.id = ?1)")
 	List<Fight> findFighterDraws(Long id);

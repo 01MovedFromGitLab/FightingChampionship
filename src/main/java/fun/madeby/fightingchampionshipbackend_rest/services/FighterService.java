@@ -3,6 +3,7 @@ package fun.madeby.fightingchampionshipbackend_rest.services;
 import fun.madeby.fightingchampionshipbackend_rest.models.Fight;
 import fun.madeby.fightingchampionshipbackend_rest.models.Fighter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface FighterService {
@@ -13,5 +14,6 @@ List<Fighter> retrieveAll();
 List<Fight> retrieveWonFights(Long id);
 List<Fight> retrieveDrawnFights(Long id);
 Integer retrieveLostFightCount(Long id);
+List<Fighter> retrieveBirthDateBefore(LocalDate date);
 
 }

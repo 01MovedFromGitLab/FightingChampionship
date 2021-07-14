@@ -7,6 +7,7 @@ import fun.madeby.fightingchampionshipbackend_rest.repositories.FighterRepositor
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -58,6 +59,11 @@ public List<Fight> retrieveDrawnFights(Long id) {
 @Override
 public Integer retrieveLostFightCount(Long id) {
 	return FIGHT_REPO.findFighterLosses(id);
+}
+
+@Override
+public List<Fighter> retrieveBirthDateBefore(LocalDate date) {
+	return FIGHTER_REPO.bornBefore(date);
 }
 
 /*

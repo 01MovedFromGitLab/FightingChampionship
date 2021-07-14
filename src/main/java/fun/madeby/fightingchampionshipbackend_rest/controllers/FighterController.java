@@ -9,11 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/fighter")
+@RequestMapping("api/v1/fighter")
 public class FighterController {
 private final FighterService fighterService;
 
@@ -21,6 +22,13 @@ private final FighterService fighterService;
 public void deleteFighter(@PathVariable Long id) {
 	fighterService.remove(id);
 }
+
+@GetMapping("search/{date}")
+public List<Fighter> birthDateBefore(@PathVariable LocalDate date) {
+	return fighterService.retrieveBirthDateBefore(date);
+}
+
+
 
 @PostMapping("/new")
 public void addFighter(@RequestBody Fighter fighter) {
