@@ -1,6 +1,7 @@
 package fun.madeby.fightingchampionshipbackend_rest;
 
 import fun.madeby.fightingchampionshipbackend_rest.models.*;
+import fun.madeby.fightingchampionshipbackend_rest.repositories.RoleRepository;
 import fun.madeby.fightingchampionshipbackend_rest.services.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -19,10 +20,21 @@ private final VenueService venueService;
 private final EventService eventService;
 private final FightService fightService;
 private final UserService userService;
+// Using Spring JPA direct for role.
+private final RoleRepository ROLE_REPO;
 
 // // to turn off @PostConstruct
-@PostConstruct
+//@PostConstruct
 public void init(){
+
+	// Last addition -> User roles
+	Role user = new Role();
+	Role admin = new Role();
+	user.setName("USER");
+	admin.setName("ADMIN");
+	ROLE_REPO.save(user);
+	ROLE_REPO.save(admin);
+
 
 	// Late addition -> Users
 	// UUID.randomUUID.toString() is probably no good for me to use when testing as will never see the pwords.
@@ -38,7 +50,19 @@ public void init(){
 	User user9 = new User("Serena", "Asdf1234%", "Serena", "Dullprotest", 35, "Belgium");
 	User user10 = new User("Veronima", "Asdf1234%", "Veronima", "Knob", 25, "Netherlands");
 
+	user1.addRole(user);
+	user2.addRole(user);
+	user3.addRole(user);
+	user4.addRole(user);
+	user5.addRole(user);
+	user6.addRole(admin);
+	user7.addRole(admin);
+	user8.addRole(admin);
+	user9.addRole(admin);
+	user10.addRole(admin);
+
 	List<User> userList = Arrays.asList(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10);
+
 
 	userService.addMultipleUsers(userList);
 

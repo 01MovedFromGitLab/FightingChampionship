@@ -1,6 +1,7 @@
 package fun.madeby.fightingchampionshipbackend_rest.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -15,23 +16,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity httpSecurity) throws Exception {
 
-		/*httpSecurity
-			.authorizeRequests();
-*/
-		// This is if you have H2 in memory db:
-		/*httpSecurity.authorizeRequests().antMatchers("/h2/**")
-			.permitAll().antMatchers("/api/users/**")
-			.hasRole("ADMIN").and().httpBasic()
-			.and().httpBasic().and().csrf().disable();
+		httpSecurity
+			.authorizeRequests()
+			.antMatchers("/results").hasRole("ADMIN") //This role/role table does not exist yet.
+			.antMatchers(HttpMethod.GET, "/", "/**").permitAll()
+			.and()
+			.formLogin()
+			.loginPage("/login");
 
-		httpSecurity.headers().frameOptions().disable();
-	}
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder.encode("admin")).roles("ADMIN");
-	}
-
-		 */
 	}
 }

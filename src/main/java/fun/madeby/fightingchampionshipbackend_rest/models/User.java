@@ -5,7 +5,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -34,6 +36,13 @@ private Integer age;
 @Column(name = "Country", columnDefinition = "VARCHAR(50) NOT NULL")
 private String country;
 
+// Dominant side of ManyToMany
+@ManyToMany
+@JoinTable(name = "User_Role",
+				joinColumns = @JoinColumn(name = "user_id"),
+				inverseJoinColumns = @JoinColumn(name = "role_id"))
+private Set<Role> roles = new HashSet<>();
+
 public User() {
 }
 
@@ -44,6 +53,12 @@ public User(String userName, String password, String firstName, String lastName,
 	this.lastName = lastName;
 	this.age = age;
 	this.country = country;
+}
+// Reciprocal update of eachothers Sets of eachother.
+public void addRole(Role role) {
+	this.roles.add(role);
+	if (!role.getUsers().contains(this))
+		role.addUser(this);
 }
 
 @Override
@@ -58,4 +73,5 @@ public boolean equals(Object o) {
 public int hashCode() {
 	return Objects.hash(id);
 }
+
 }
