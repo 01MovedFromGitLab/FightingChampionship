@@ -3,13 +3,11 @@ package fun.madeby.fightingchampionshipbackend_rest;
 import fun.madeby.fightingchampionshipbackend_rest.models.*;
 import fun.madeby.fightingchampionshipbackend_rest.services.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
+import java.util.Arrays;
+import java.util.List;
 
 @Component
 //@Profile("dev") // Look into this and have dev/prod
@@ -20,12 +18,31 @@ private final WeightClassService weightClassService;
 private final VenueService venueService;
 private final EventService eventService;
 private final FightService fightService;
+private final UserService userService;
 
 // // to turn off @PostConstruct
-//@PostConstruct
+@PostConstruct
 public void init(){
 
-	// Make Weight Classes
+	// Late addition -> Users
+	// UUID.randomUUID.toString() is probably no good for me to use when testing as will never see the pwords.
+
+	User user1 = new User("alexR", "Asdf1234%", "Alex", "Rosu", 23, "Romania");
+	User user2 = new User("georgianQ", "Asdf1234%", "Georgina", "Rosu", 22, "Brasil");
+	User user3 = new User("rosa5", "Asdf1234%", "Rosa", "Hogwash", 38, "Mexico");
+	User user4 = new User("orlaM", "Asdf1234%", "Orla", "Dilston", 30, "USA");
+	User user5 = new User("jerryH", "Asdf1234%", "Jerry", "Ragsnot", 27, "France");
+	User user6 = new User("Savannah", "Asdf1234%", "Savannah", "Dowsdf", 34, "Spain");
+	User user7 = new User("Abby", "Asdf1234%", "Abby", "Frigmallet", 24, "Germany");
+	User user8 = new User("Velma", "Asdf1234%", "Velma", "Fudgewacker", 25, "UK");
+	User user9 = new User("Serena", "Asdf1234%", "Serena", "Dullprotest", 35, "Belgium");
+	User user10 = new User("Veronima", "Asdf1234%", "Veronima", "Knob", 25, "Netherlands");
+
+	List<User> userList = Arrays.asList(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10);
+
+	userService.addMultipleUsers(userList);
+
+	/*// Make Weight Classes
 	WeightClass strawWeight = new WeightClass("Strawweight", "SW");
 	WeightClass flyWeight = new WeightClass("Flyweight", "FW");
 	WeightClass bantamWeight = new WeightClass("Bantamweight", "BW");
@@ -171,7 +188,7 @@ public void init(){
 	//fight04.setFinishMethod("KO");
 	//fight04.setFinishTime(LocalDateTime.of(2021, Month.JUNE, 30, 22, 30));
 	//fight04.setWinner(fighter03);
-	fightService.register(fight04);
+	fightService.register(fight04);*/
 
 }
 
