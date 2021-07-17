@@ -1,5 +1,6 @@
 package fun.madeby.fightingchampionshipbackend_rest.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@JsonIgnoreProperties("roles")
 public class User {
 
 @Id
@@ -39,8 +41,8 @@ private String country;
 // Dominant side of ManyToMany
 @ManyToMany
 @JoinTable(name = "User_Role",
-				joinColumns = @JoinColumn(name = "user_id"),
-				inverseJoinColumns = @JoinColumn(name = "role_id"))
+	joinColumns = @JoinColumn(name = "user_id"),
+	inverseJoinColumns = @JoinColumn(name = "role_id"))
 private Set<Role> roles = new HashSet<>();
 
 public User() {
@@ -54,6 +56,7 @@ public User(String userName, String password, String firstName, String lastName,
 	this.age = age;
 	this.country = country;
 }
+
 // Reciprocal update of eachothers Sets of eachother.
 public void addRole(Role role) {
 	this.roles.add(role);

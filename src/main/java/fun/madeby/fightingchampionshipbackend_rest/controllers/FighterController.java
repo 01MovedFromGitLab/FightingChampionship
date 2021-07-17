@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
-//@CrossOrigin("*")
+@CrossOrigin("*")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1/fighter")
@@ -87,7 +87,6 @@ public FightRecord retrieveFightResults(@PathVariable Long id){
 	return fightRecord;
 }
 
-//@CrossOrigin
 @GetMapping(value = "/all")
 public List<Fighter> allFighters() {
 	return fighterService.retrieveAll();

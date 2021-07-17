@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,7 +27,7 @@ private final UserService userService;
 private final RoleRepository ROLE_REPO;
 
 // // to turn off @PostConstruct
-//@PostConstruct
+//@PostConstruct Last Build-> 170721 one warning CommandAcceptanceException foreign keys of roles.
 public void init(){
 
 	// Last addition -> User roles
@@ -66,7 +69,7 @@ public void init(){
 
 	userService.addMultipleUsers(userList);
 
-	/*// Make Weight Classes
+	// Make Weight Classes
 	WeightClass strawWeight = new WeightClass("Strawweight", "SW");
 	WeightClass flyWeight = new WeightClass("Flyweight", "FW");
 	WeightClass bantamWeight = new WeightClass("Bantamweight", "BW");
@@ -195,7 +198,7 @@ public void init(){
 	fight03.setWeightClass(strawWeight);
 	fight03.setBlueFighter(fighter01);
 	fight03.setRedFighter(fighter04);
-	//fight03.setIsFinished(true);
+	fight03.setIsFinished(false);
 	//fight03.setFinishedInRound(10L);
 	//fight03.setFinishMethod("Points");
 	//fight03.setFinishTime(LocalDateTime.of(2021, Month.OCTOBER, 30, 20, 55));
@@ -207,12 +210,12 @@ public void init(){
 	fight04.setWeightClass(lightWeight);
 	fight04.setBlueFighter(fighter03);
 	fight04.setRedFighter(fighter02);
-	//fight04.setIsFinished(true);
+	fight04.setIsFinished(false);
 	//fight04.setFinishedInRound(3L);
 	//fight04.setFinishMethod("KO");
 	//fight04.setFinishTime(LocalDateTime.of(2021, Month.JUNE, 30, 22, 30));
 	//fight04.setWinner(fighter03);
-	fightService.register(fight04);*/
+	fightService.register(fight04);
 
 }
 

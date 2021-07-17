@@ -79,4 +79,22 @@ public Fight(Boolean isFinished, Long finishedInRound, LocalDateTime finishTime,
 	// Auto add 02
 	addFightToEvent(this);
 }
+
+public Fight(Long finishedInRound, LocalDateTime finishTime,
+             String finishMethod, Fighter redFighter, Fighter winner, Fighter blueFighter,
+             WeightClass weightClass, Event event) {
+	this.isFinished = false;
+	this.finishedInRound = finishedInRound;
+	this.finishTime = finishTime;
+	this.finishMethod = finishMethod;
+	this.redFighter = redFighter;
+	this.winner = winner;
+	this.blueFighter = blueFighter;
+	this.weightClass = weightClass;
+	this.event = event;
+	// Auto add 01
+	addFightToWeightClass(this);
+	// Auto add 02
+	addFightToEvent(this);
+}
 }
