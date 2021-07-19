@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
 private final PasswordEncoder passwordEncoder;
 private final UserDetailsService userDetailsService;
 
@@ -22,7 +23,8 @@ public void configure(HttpSecurity httpSecurity) throws Exception {
 
 	httpSecurity
 		.authorizeRequests()
-		.antMatchers("/results").hasRole("ADMIN");
+		.antMatchers("/results").hasRole("ADMIN")
+		.and().csrf().disable();
 			                        //.hasRole("ADMIN")
 	//.antMatchers(HttpMethod.GET, "/fighter").permitAll();
 	//.antMatchers(HttpMethod.POST, "/fighters/new").permitAll()

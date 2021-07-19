@@ -5,6 +5,7 @@ import fun.madeby.fightingchampionshipbackend_rest.models.FightRecord;
 import fun.madeby.fightingchampionshipbackend_rest.models.Fighter;
 import fun.madeby.fightingchampionshipbackend_rest.services.FighterService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +13,7 @@ import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1/fighter")
@@ -20,8 +21,9 @@ public class FighterController {
 private final FighterService fighterService;
 
 @DeleteMapping("/{id}")
-public void deleteFighter(@PathVariable Long id) {
+public ResponseEntity<String> deleteFighter(@PathVariable Long id) {
 	fighterService.remove(id);
+	return new ResponseEntity<String>("Expense deleted successfully", HttpStatus.OK);
 }
 
 @GetMapping("search/{date}")

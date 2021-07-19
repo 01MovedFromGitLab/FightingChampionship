@@ -1,3 +1,4 @@
+/*
 package fun.madeby.fightingchampionshipbackend_rest;
 
 import org.springframework.stereotype.Component;
@@ -30,3 +31,4 @@ public void destroy() {
 	Filter.super.destroy();
 }
 }
+*/
