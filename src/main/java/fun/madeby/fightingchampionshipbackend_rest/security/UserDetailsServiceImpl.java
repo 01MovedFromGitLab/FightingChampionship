@@ -1,3 +1,4 @@
+/*
 package fun.madeby.fightingchampionshipbackend_rest.security;
 
 import fun.madeby.fightingchampionshipbackend_rest.models.Role;
@@ -39,3 +40,4 @@ public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException
 }
 
 }
+*/
