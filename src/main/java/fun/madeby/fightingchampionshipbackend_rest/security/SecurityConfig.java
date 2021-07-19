@@ -1,4 +1,3 @@
-/*
 package fun.madeby.fightingchampionshipbackend_rest.security;
 
 import lombok.RequiredArgsConstructor;
@@ -43,4 +42,3 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 }
 
 }
-*/
