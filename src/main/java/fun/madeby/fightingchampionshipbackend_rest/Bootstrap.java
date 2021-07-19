@@ -41,7 +41,7 @@ public void init(){
 
 	// Late addition -> Users
 	// UUID.randomUUID.toString() is probably no good for me to use when testing as will never see the pwords.
-
+/*
 	User user1 = new User("alexR", "Asdf1234%", "Alex", "Rosu", 23, "Romania");
 	User user2 = new User("georgianQ", "Asdf1234%", "Georgina", "Rosu", 22, "Brasil");
 	User user3 = new User("rosa5", "Asdf1234%", "Rosa", "Hogwash", 38, "Mexico");
@@ -67,7 +67,7 @@ public void init(){
 	List<User> userList = Arrays.asList(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10);
 
 
-	userService.addMultipleUsers(userList);
+	userService.addMultipleUsers(userList);*/
 
 	// Make Weight Classes
 	WeightClass strawWeight = new WeightClass("Strawweight", "SW");

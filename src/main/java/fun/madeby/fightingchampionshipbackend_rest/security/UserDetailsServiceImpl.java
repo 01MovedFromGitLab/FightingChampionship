@@ -1,4 +1,4 @@
-package fun.madeby.fightingchampionshipbackend_rest.security;
+/*package fun.madeby.fightingchampionshipbackend_rest.security;
 
 import fun.madeby.fightingchampionshipbackend_rest.models.Role;
 import fun.madeby.fightingchampionshipbackend_rest.models.User;
@@ -38,4 +38,4 @@ public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException
 		authoritySet);
 }
 
-}
+}*/

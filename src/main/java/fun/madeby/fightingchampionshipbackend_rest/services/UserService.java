@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 public interface UserService {
 
 	Page<User> retrieveAll(Pageable pageable);
-	void addMultipleUsers(Iterable<User> userIterable);
-	void addSingleUser(User user);
+	//void addMultipleUsers(Iterable<User> userIterable);
+	//void addSingleUser(User user);
 	User retrieveByUsername(String username);
 }

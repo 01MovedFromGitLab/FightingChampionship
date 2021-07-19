@@ -14,7 +14,7 @@ import org.springframework.data.domain.Pageable;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 	private final UserRepository USER_REPO;
-	private final PasswordEncoder pwdEncoder;
+	//private final PasswordEncoder pwdEncoder;
 
 
 	// NOTE: ..and @Autowired here
@@ -23,15 +23,16 @@ public Page<User> retrieveAll(Pageable pageable) {
 	return USER_REPO.findAll(pageable);
 }
 
-@Override
+/*@Override
 public void addMultipleUsers(Iterable<User> userIterable) {
 	for(User u: userIterable){
 		String encodedPassword = pwdEncoder.encode(u.getPassword());
 		u.setPassword(encodedPassword);
 	}
 	USER_REPO.saveAll(userIterable);
-}
+}*/
 
+/*
 @Override
 public void addSingleUser(User user) {
 	String encodedPassword = pwdEncoder.encode(user.getPassword());
@@ -39,6 +40,7 @@ public void addSingleUser(User user) {
 	//user.addRole(roleRepo.findByName("USER")); // Be sure to add role prior to sending
 	USER_REPO.save(user);
 }
+*/
 
 @Override
 public User retrieveByUsername(String username) {
