@@ -4,9 +4,10 @@ import fun.madeby.fightingchampionshipbackend_rest.models.Fight;
 import fun.madeby.fightingchampionshipbackend_rest.models.Fighter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface FightRepository extends JpaRepository<Fight, Long> {
 	// api/V1 to return fight record of fighter.
 	List<Fight> findFightsByIsFinishedNotNullAndWinnerIs(Fighter fighter);
